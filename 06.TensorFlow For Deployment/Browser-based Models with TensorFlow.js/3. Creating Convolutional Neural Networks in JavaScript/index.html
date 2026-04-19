@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creating Convolutional Neural Networks in JavaScript</title>
+  </head>
+  <body>
+    <p>This folder implements a Convolutional Neural Network (CNN) in JavaScript to classify hand-drawn digits from the MNIST dataset.</p>
+    <h1>MNIST CNN Classifier</h1>
+    <div>
+      <canvas
+        id="canvas"
+        width="280"
+        height="280"
+        style="border: 1px solid #000; cursor: crosshair"
+      ></canvas>
+      <img id="canvasimg" style="display: none" />
+    </div>
+    <div>
+      <input type="file" id="imageUpload" accept="image/*" />
+      <button id="sb">Classify</button>
+      <button id="cb">Clear</button>
+    </div>
+  </body>
+  <!-- Load TensorFlow.js -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+  <!-- Load tfjs-vis for visualization -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis"></script>
+  <script type="module" src="script.js"></script>
+</html>

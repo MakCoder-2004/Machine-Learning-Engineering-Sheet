@@ -1,0 +1,35 @@
+<html>
+<head>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"> </script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@latest"> </script> 
+</head>
+<body>
+    <p>This page demonstrates how to use the pre-trained MobileNet model for image classification directly in the browser.</p>
+    <img id="img" src="download.jpg" style="height:700px"></img>
+    <div id="output" style="font-family:courier;font-size:24px;height:300px"></div>
+</body>
+<script>
+    const img = document.getElementById('img');
+    const outp = document.getElementById('output');
+    
+    img.onload = () => {
+        mobilenet.load().then(model => {
+            model.classify(img).then(predictions => {
+                console.log(predictions);
+                for(var i = 0; i<predictions.length; i++){
+                    outp.innerHTML += "<br/>" + predictions[i].className + " : " + predictions[i].probability;
+                }
+            }).catch(err => {
+                outp.innerHTML = "Error during classification: " + err;
+            });
+        }).catch(err => {
+            outp.innerHTML = "Error loading model: " + err;
+        });
+    };
+    
+    // In case the image is already loaded from cache before the script runs
+    if (img.complete) {
+        img.onload();
+    }
+</script>
+</html>
